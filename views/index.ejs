@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Daftar Pasien</title>
+</head>
+<body>
+  <h1>Daftar Pasien</h1>
+  <a href="/add">Tambah Data</a>
+  <table border="1">
+    <tr>
+      <th>ID</th>
+      <th>Nama</th>
+      <th>Umur</th>
+      <th>Aksi</th>
+    </tr>
+    <% patients.forEach(patient => { %>
+      <tr>
+        <td><%= patient.id %></td>
+        <td><%= patient.name %></td>
+        <td><%= patient.age %> tahun</td>
+        <td>
+          <a href="/edit/<%= patient.id %>">Edit</a>
+          <form action="/delete/<%= patient.id %>?_method=DELETE" method="POST" style="display:inline;">
+            <button type="submit">Hapus</button>
+          </form>
+        </td>
+      </tr>
+    <% }); %>
+  </table>
+</body>
+</html>
